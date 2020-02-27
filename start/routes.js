@@ -19,4 +19,5 @@ const Route = use('Route')
 Route.group(() => {
   Route.get('deaths', 'StatisticController.getDeaths')
   Route.get('recovered', 'StatisticController.getRecovered')
+  Route.get('confirmed', 'StatisticController.getConfirmed')
 }).prefix('api')

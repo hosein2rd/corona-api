@@ -44,6 +44,26 @@ class StatisticController {
         recovered: list
     }
   }
+
+  async getConfirmed() {
+    const countries = (await Country.query().fetch()).toJSON()
+    const list = []
+    let totalConfirmed = 0
+
+    for (let country of countries) {
+        list.push({
+            country: country.name,
+            confirmed: country.confirmed
+          })
+    
+          totalConfirmed += country.confirmed
+    }
+    return {
+        success: true,
+        totalConfirmed,
+        confirmed: list
+    }
+  }
 }
 
 module.exports = StatisticController
