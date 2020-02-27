@@ -24,6 +24,26 @@ class StatisticController {
         deaths: list
     }
   }
+
+  async getRecovered() {
+    const countries = (await Country.query().fetch()).toJSON()
+    const list = []
+    let totalRecovered = 0
+
+    for (let country of countries) {
+        list.push({
+            country: country.name,
+            recovered: country.recovered
+          })
+    
+          totalRecovered += country.recovered
+    }
+    return {
+        success: true,
+        totalRecovered,
+        recovered: list
+    }
+  }
 }
 
 module.exports = StatisticController
