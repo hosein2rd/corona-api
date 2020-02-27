@@ -16,4 +16,8 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.on('/').render('welcome')
+Route.group(() => {
+  Route.get('deaths', 'StatisticController.getDeaths')
+  Route.get('recovered', 'StatisticController.getRecovered')
+  Route.get('confirmed', 'StatisticController.getConfirmed')
+}).prefix('api')
