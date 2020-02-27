@@ -17,5 +17,5 @@
 const Route = use('Route')
 
 Route.group(() => {
-  Route.get('deaths')
+  Route.get('deaths', 'StatisticController.getDeaths')
 }).prefix('api')
